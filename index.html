@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasa Website Interaktif | NTT Code</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0e1a24;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#1de9c9;
+    filter:blur(180px);
+    opacity:.12;
+    top:-200px;
+    left:-150px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#6df33a;
+    filter:blur(180px);
+    opacity:.12;
+    bottom:-200px;
+    right:-150px;
+    z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:12px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(14,26,36,.85);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:bold;
+    color:#1de9c9;
+    text-decoration:none;
+}
+
+.logo span{
+    color:white;
+}
+
+.logo img{
+    height:44px;
+    width:44px;
+    object-fit:contain;
+    background:#fff;
+    border-radius:10px;
+    padding:3px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+}
+
+nav ul a{
+    color:#ddd;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav ul a:hover{
+    color:#1de9c9;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:110px 20px 50px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-logo{
+    display:block;
+    width:clamp(150px,22vw,220px);
+    height:auto;
+    margin:0 auto 30px;
+    background:#fff;
+    border-radius:28px;
+    padding:12px;
+    box-shadow:0 0 50px rgba(29,233,201,.25);
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid #1de9c9;
+    border-radius:30px;
+    color:#1de9c9;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(40px,7vw,80px);
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#1de9c9;
+    text-shadow:0 0 25px rgba(29,233,201,.5);
+}
+
+.hero p{
+    color:#aaa;
+    font-size:18px;
+    line-height:1.7;
+    max-width:700px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#1de9c9;
+    color:#0e1a24;
+}
+
+.btn-secondary{
+    border:1px solid #555;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(29,233,201,.2);
+}
+
+/* SECTION */
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#888;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:30px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#1de9c9;
+    box-shadow:0 15px 40px rgba(29,233,201,.08);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* PORTFOLIO */
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.project{
+    overflow:hidden;
+    border-radius:18px;
+    background:#14263a;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:#1de9c9;
+}
+
+.project-preview{
+    height:190px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:55px;
+    background:linear-gradient(135deg,#0e1a24,#17333a);
+}
+
+.project-content{
+    padding:25px;
+}
+
+.project-content h3{
+    margin-bottom:10px;
+}
+
+.project-content p{
+    color:#999;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.demo{
+    display:inline-block;
+    padding:10px 18px;
+    background:#1de9c9;
+    color:#0e1a24;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* HARGA */
+.prices{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.price{
+    padding:35px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    text-align:center;
+}
+
+.price.featured{
+    border:1px solid #1de9c9;
+    transform:scale(1.03);
+}
+
+.price h3{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.price h4{
+    font-size:32px;
+    color:#1de9c9;
+    margin-bottom:20px;
+}
+
+.price ul{
+    list-style:none;
+    color:#aaa;
+    line-height:2;
+    margin-bottom:25px;
+}
+
+.price a{
+    display:block;
+    padding:13px;
+    background:#1de9c9;
+    color:#0e1a24;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* PROSES */
+.process{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.step{
+    padding:25px;
+    background:rgba(255,255,255,.04);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.step-number{
+    font-size:40px;
+    font-weight:bold;
+    color:#1de9c9;
+    margin-bottom:15px;
+}
+
+/* CONTACT */
+.contact-box{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+    padding:60px 30px;
+    border:1px solid rgba(29,233,201,.3);
+    border-radius:25px;
+    background:rgba(29,233,201,.03);
+}
+
+.contact-box h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#999;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#777;
+}
+
+/* ANIMATION */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    nav{
+        padding:12px 5%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+    .hero{
+        padding-top:110px;
+    }
+
+    .price.featured{
+        transform:none;
+    }
+}
+
+/* PALET LOGO: electric teal, neon green, dark slate */
+:root{--teal:#1de9c9;--green:#6df33a;--slate:#0e1a24;}
+.logo{color:#fff}
+.logo span,.hero h1 span,.price h4,.step-number{
+    background:linear-gradient(90deg,var(--teal),var(--green));
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;text-shadow:none;
+}
+.btn-primary,.demo,.price a{
+    background:linear-gradient(90deg,var(--teal),var(--green));
+    color:var(--slate);
+}
+.badge{border-color:var(--teal);color:var(--teal);}
+.card:hover,.project:hover,.price.featured{border-color:var(--green);}
+.card:hover,.btn:hover{box-shadow:0 12px 35px rgba(109,243,58,.18);}
+.hero-logo{box-shadow:0 0 60px rgba(29,233,201,.3),0 0 90px rgba(109,243,58,.15);}
+.contact-box{border-color:rgba(109,243,58,.35);background:rgba(29,233,201,.04);}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="#home" class="logo">
+        <img src="ChatGPT Image Oct 9, 2026, 08_58_56 PM.png" alt="Logo NTT Code">
+        <div>NTT <span>CODE</span></div>
+    </a>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#harga">Harga</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <img src="ChatGPT Image Oct 9, 2026, 08_58_56 PM.png" alt="Logo NTT Code" class="hero-logo">
+
+        <div class="badge">
+            ⚡ JASA PEMBUATAN WEBSITE INTERAKTIF
+        </div>
+
+        <h1>
+            Buat Website Yang
+            <span>Lebih Hidup.</span>
+        </h1>
+
+        <p>
+            Kami membantu membuat website modern,
+            interaktif, responsive dan menarik untuk
+            personal, portofolio, bisnis, sekolah
+            maupun berbagai kebutuhan lainnya.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#portfolio" class="btn btn-primary">
+                Lihat Portfolio
+            </a>
+
+            <a href="#kontak" class="btn btn-secondary">
+                Konsultasi
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LAYANAN -->
+<section id="layanan">
+
+    <div class="section-title reveal">
+
+        <h2>Layanan Kami</h2>
+
+        <p>
+            Website disesuaikan dengan kebutuhan kamu.
+        </p>
+
+    </div>
+
+
+    <div class="services">
+
+        <div class="card reveal">
+            <div class="icon">🌐</div>
+            <h3>Website Personal</h3>
+            <p>
+                Website pribadi untuk memperkenalkan diri,
+                profil, informasi dan berbagai karya.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">💼</div>
+            <h3>Website Bisnis</h3>
+            <p>
+                Website untuk memperkenalkan usaha,
+                layanan, produk dan informasi bisnis.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">🎨</div>
+            <h3>Portfolio</h3>
+            <p>
+                Tampilkan karya dan project kamu
+                dalam website portfolio yang menarik.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">⚡</div>
+            <h3>Website Interaktif</h3>
+            <p>
+                Website dengan animasi, tombol interaktif,
+                game sederhana dan berbagai fitur lainnya.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">📱</div>
+            <h3>Responsive</h3>
+            <p>
+                Tampilan website menyesuaikan laptop,
+                tablet maupun smartphone.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">🎮</div>
+            <h3>Mini Game</h3>
+            <p>
+                Pembuatan game sederhana berbasis HTML,
+                CSS dan JavaScript.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+
+    <div class="section-title reveal">
+
+        <h2>Project Saya</h2>
+
+        <p>
+            Beberapa project yang sedang dikembangkan
+            dan sudah selesai.
+        </p>
+
+    </div>
+
+
+    <div class="portfolio">
+
+
+        <!-- PROJECT 1 -->
+        <div class="project reveal">
+
+            <div class="project-preview">
+                🖥️
+            </div>
+
+            <div class="project-content">
+
+                <h3>10 TJKT 5 - Cyber Class</h3>
+
+                <p>
+                    Website profile kelas dengan struktur
+                    organisasi, gallery foto dan beberapa
+                    fitur pendukung lainnya.
+                </p>
+
+                <a
+                    href="https://profile-kelas-10-tjkt-5.netlify.app"
+                    target="_blank"
+                    class="demo">
+                    Lihat Demo →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 2 -->
+        <div class="project reveal">
+
+            <div class="project-preview">
+                💻
+            </div>
+
+            <div class="project-content">
+
+                <h3>Web Terminal</h3>
+
+                <p>
+                    Terminal berbasis website dengan tampilan
+                    seperti command prompt dan perintah interaktif.
+                </p>
+
+                <a
+                    href="https://terminal-x-tjkt-5.netlify.app"
+                    target="_blank"
+                    class="demo">
+                    Lihat Demo →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 3 -->
+        <div class="project reveal">
+
+            <div class="project-preview">
+                🎂
+            </div>
+
+            <div class="project-content">
+
+                <h3>HBD For Everyone</h3>
+
+                <p>
+                    Website countdown ulang tahun dengan
+                    tampilan sederhana dan interaktif.
+                </p>
+
+                <a
+                    href="https://hbd-for-everyone-x-tjkt-5.netlify.app"
+                    target="_blank"
+                    class="demo">
+                    Lihat Demo →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 4 -->
+        <div class="project reveal">
+
+            <div class="project-preview">
+                🐍
+            </div>
+
+            <div class="project-content">
+
+                <h3>Snake Game</h3>
+
+                <p>
+                    Game ular klasik berbasis HTML, CSS
+                    dan JavaScript yang dapat dimainkan langsung.
+                </p>
+
+                <a
+                    href="https://snake-game-x-tjkt-5.netlify.app"
+                    target="_blank"
+                    class="demo">
+                    Mainkan →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HARGA -->
+<section id="harga">
+
+    <div class="section-title reveal">
+
+        <h2>Paket Website</h2>
+
+        <p>
+            Pilih sesuai kebutuhan project kamu.
+        </p>
+
+    </div>
+
+
+    <div class="prices">
+
+        <div class="price reveal">
+
+            <h3>Basic</h3>
+
+            <h4>Rp100K</h4>
+
+            <ul>
+                <li>✓ 1 Halaman</li>
+                <li>✓ Responsive</li>
+                <li>✓ Desain sederhana</li>
+                <li>✓ HTML + CSS</li>
+            </ul>
+
+            <a href="#kontak">
+                Pesan
+            </a>
+
+        </div>
+
+
+        <div class="price featured reveal">
+
+            <h3>Interactive</h3>
+
+            <h4>Rp150K</h4>
+
+            <ul>
+                <li>✓ Multi Section</li>
+                <li>✓ Responsive</li>
+                <li>✓ Animasi</li>
+                <li>✓ JavaScript</li>
+                <li>✓ Fitur interaktif</li>
+            </ul>
+
+            <a href="#kontak">
+                Pesan
+            </a>
+
+        </div>
+
+
+        <div class="price reveal">
+
+            <h3>Custom</h3>
+
+            <h4>Hubungi</h4>
+
+            <ul>
+                <li>✓ Desain sesuai request</li>
+                <li>✓ Fitur custom</li>
+                <li>✓ Website kompleks</li>
+                <li>✓ Konsultasi project</li>
+            </ul>
+
+            <a href="#kontak">
+                Konsultasi
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROSES -->
+<section>
+
+    <div class="section-title reveal">
+
+        <h2>Cara Kerja</h2>
+
+        <p>
+            Sederhana dan mudah.
+        </p>
+
+    </div>
+
+
+    <div class="process">
+
+        <div class="step reveal">
+            <div class="step-number">01</div>
+            <h3>Konsultasi</h3>
+            <p>
+                Sampaikan ide dan kebutuhan website.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-number">02</div>
+            <h3>Desain</h3>
+            <p>
+                Menentukan konsep dan tampilan website.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-number">03</div>
+            <h3>Pembuatan</h3>
+            <p>
+                Website mulai dikembangkan sesuai konsep.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-number">04</div>
+            <h3>Testing</h3>
+            <p>
+                Mengecek tampilan dan fungsi website.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-number">05</div>
+            <h3>Publikasi</h3>
+            <p>
+                Website siap digunakan dan dipublikasikan.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- KONTAK -->
+<section id="kontak">
+
+    <div class="contact-box reveal">
+
+        <h2>Punya Ide Website?</h2>
+
+        <p>
+            Ceritakan ide website yang ingin kamu buat.
+            Kami dapat membantu membuat website
+            yang sesuai dengan kebutuhanmu.
+        </p>
+
+        <a
+            href="https://wa.me/6285954747551?text=Halo%2C%20saya%20ingin%20membuat%20website."
+            target="_blank"
+            class="btn btn-primary">
+
+            💬 Hubungi via WhatsApp
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 NTT Code — Jasa Pembuatan Website Interaktif | EGBK | 085954747551
+    </p>
+
+    <p style="margin-top:8px;">
+        Dibuat dengan HTML, CSS & JavaScript
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SCROLL ANIMATION */
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+    reveals.forEach(element => {
+
+        const windowHeight = window.innerHeight;
+
+        const elementTop =
+            element.getBoundingClientRect().top;
+
+        if(elementTop < windowHeight - 80){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+
+/* NAVBAR */
+
+const links = document.querySelectorAll("nav ul a");
+
+links.forEach(link => {
+
+    link.addEventListener("click", function(){
+
+        links.forEach(item => {
+
+            item.style.color = "";
+
+        });
+
+        this.style.color = "#1de9c9";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
